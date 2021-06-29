@@ -5,6 +5,7 @@ import requests
 import json
 import random
 # from replit import db
+from keep_online import keep_online
 
 client = discord.Client()
 
@@ -183,4 +184,5 @@ async def on_message(message):
     #         db["chef_botaroni_responding"] = False
     #         await message.channel.send("Chef Botaroni's responding is off.")
 
+keep_online()
 client.run(os.getenv('TOKEN'))

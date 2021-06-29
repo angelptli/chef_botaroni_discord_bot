@@ -52,20 +52,23 @@ def get_quote():
     quote = json_data[0]['q'] + " -" + json_data[0]['a']
     return quote
 
-## If using replit
-# def update_trigger_replies(trigger_reply):
-#     if "trigger_replies" in db.keys():
-#         trigger_replies = db["trigger_replies"]
-#         trigger_replies.append(trigger_reply)
-#         db["trigger_replies"] = trigger_replies
+## If using replit's db:
+# def update_trigs(trig_reply):
+#     if "trigs" in db.keys():
+#         trigs = db["trigs"]
+#         trigs.append(trig_reply)
+#         db["trigs"] = trigs
 #     else:
-#         db["trigger_replies"] = [trigger_reply]
+#         db["trigs"] = [trig_reply]
 
-# def delete_encouragment(index):
-#     trigger_replies = db["trigger_replies"]
-#     if len(trigger_replies) > index:
-#         del trigger_replies[index]
-#     db["trigger_replies"] = trigger_replies
+# def delete_trigs(index):
+#     trigs = db["trigs"]
+#     if len(trigs) > index:
+#         del trigs[index]
+#     db["trigs"] = trigs
+
+# if "chef_botaroni_responding" not in db.keys():
+#   db["chef_botaroni_responding"] = True
 
 @client.event
 async def on_ready():
@@ -80,28 +83,49 @@ async def on_message(message):
 
     if re.search('[H|h](ello|ey|owdy)', msg) or re.search(' [H|h]i', msg):
         await message.channel.send('Hello :)')
-    if msg.startswith(('Hi', 'hi')):
+    elif msg.startswith(('Hi', 'hi')):
         await message.channel.send('Hello :)')
     elif re.search('\$inspire', msg):
         await message.channel.send(get_quote())
     elif any(word in msg.lower() for word in trigger_phrases):
         await message.channgel.send(random.choice(trigger_replies))
 
-    # options = trigger_replies
-    # if "trigger_replies" in db.keys():
-    #     options = options + db["trigger_replies"]
-    # if any(word in msg for word in trigger_phrases):
-    #     await message.channel.send(random.choice(options))
-    # if msg.startswith("$new"):
-    #     trigger_message = msg.split("$new ",1)[1]
-    #     update_trigger_replies(trigger_message)
-    #     await message.channel.send("New encouraging message added.")
-    # if msg.startswith("$del"):
-    #     trigger_replies = []
-    #     if "trigger_replies" in db.keys():
-    #         index = int(msg.split("$del",1)[1])
-    #         delete_encouragment(index)
-    #         trigger_replies = db["trigger_replies"]
-    #     await message.channel.send(trigger_replies)
+    ## If using replit's db:
+    # if db["chef_botaroni_responding"]:
+    #     options = trigger_replies
+    #     if "trigs" in db.keys():
+    #         options = options + db["trigs"]
+
+    #     if any(word in msg for word in trigger_phrases):
+    #         await message.channel.send(random.choice(options))
+
+    # if msg.startswith("$chef_botaroni_new"):
+    #     trigger_message = msg.split("$chef_botaroni_new ",1)[1]
+    #     update_trigs(trigger_message)
+    #     await message.channel.send("New trigger message added.")
+
+    # if msg.startswith("$chef_botaroni_del"):
+    #     trigs = []
+    #     if "trigs" in db.keys():
+    #         index = int(msg.split("$chef_botaroni_del",1)[1])
+    #         delete_trigs(index)
+    #         trigs = db["trigs"]
+    #     await message.channel.send(trigs)
+
+    # if msg.startswith("$chef_botaroni_list"):
+    #     trigs = []
+    #     if "trigs" in db.keys():
+    #         trigs = db["trigs"]
+    #     await message.channel.send(trigs)
+    
+    # if msg.startswith("$chef_botaroni_responding"):
+    #     value = msg.split("$chef_botaroni_responding ",1)[1]
+
+    #     if value.lower() == "true":
+    #         db["chef_botaroni_responding"] = True
+    #         await message.channel.send("Chef Botaroni's responding is on.")
+    #     else:
+    #         db["chef_botaroni_responding"] = False
+    #         await message.channel.send("Chef Botaroni's responding is off.")
 
 client.run(os.getenv('TOKEN'))

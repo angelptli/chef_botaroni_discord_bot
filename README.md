@@ -22,10 +22,10 @@ Chef Botaroni gives inspiration quotes with the `$inspire` command:<br/>
 Chef Botaroni stores user input messages in its database of random replies with the `$chef_botaroni_new` command:<br/>
 *Insert screenshot here*<br/>
 
-Chef Botaroni can delete user input messages from is database with the `$chef_botaroni_del` command:<br/>
+Chef Botaroni displays a list of user input messages with the `$chef_botaroni_list` command:<br/>
 *Insert screenshot here*<br/>
 
-Chef Botaroni displays a list of user input messages with the `$chef_botaroni_list` command:<br/>
+Chef Botaroni can delete user input messages from is database with the `$chef_botaroni_del` command:<br/>
 *Insert screenshot here*<br/>
 
 Chef Botaroni's responses can turn off with the `$chef_botaroni_responding` command:<br/>

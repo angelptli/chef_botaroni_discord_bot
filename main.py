@@ -46,6 +46,58 @@ trigger_replies = [
     "Don't mind me. I'm just here eating popcorn."
     ]
 
+random_words = ["embryo", "permanent", "contract", "market", "telephone",
+                "consciousness", "fantasy", "stake", "help", "obligation",
+                "mean", "offend", "valid", "remind", "nuclear", "resource",
+                "buy", "deputy", "trance", "paralyzed", "employee", "crop",
+                "band", "castle", "hypothesis", "candle", "site", "situation",
+                "wilderness", "dump", "gene", "appointment", "crown", "please",
+                "cinema", "climate", "continental", "resort", "wealth", "rank",
+                "fixture", "deter", "ambiguous", "frog", "partner", "slipper",
+                "pedestrian", "theme", "gravity", "obstacle", "appoint",
+                "explain", "other", "round", "opposed", "egg", "character",
+                "teacher", "stage", "health", "omission", "impound", "eaux",
+                "authorise", "bag", "dependence" "welcome", "picture", "code",
+                "approach", "definite", "instruction", "celebration", "spend",
+                "discuss", "fleet", "mine", "copper", "blackmail", "invisible",
+                "proportion", "double", "victory", "increase", "behave",
+                "safe", "reason", "acid", "drill", "joy", "element", "praise",
+                "demonstrate", "hook", "cunning", "roof", "ground", "stitch",
+                "president", "elaborate"]
+
+random_replies = [
+    "With a serving of vegan chicken balls.",
+    "Delicious...imitation meat...",
+    "Beep boop where can I buy almond ice cream?",
+    "I'm craving fake bacon and ham.",
+    "I like grilling my BBQ until everything is burnt.",
+    "Sometimes I sit under a tree to when I eat super processed vegan stuff.",
+    "Why enjoy a boiled hot dog when you can enjoy a boiled sausage?",
+    "What's hidden behind the door? A single egg.",
+    "I like onigiri with cheese on top more than anyone else.",
+    "The second I saw the sun today, I thought soft boiled egg.",
+    "Traveling became almost extinct. I was eating alone at Ichiran Ramen's.",
+    "What's underneath your seat? A potato wedge.",
+    "Yesterday's weather was good for hot fish stew.",
+    "These lyrics remind me of the watercress sandwich I had today.",
+    "I like baked potato soup.",
+    "The green tea and avocado shake turned out as expected.",
+    "Ever had oysters rockefeller? Me netiher.",
+    "This flan is tasty.",
+    "Potato wedges are best for repairing relationships.",
+    "Whose got maple bacon doughnuts?",
+    "I found a persimmon.",
+    "I like pomelo.",
+    "It ain't a party if there's no pho.",
+    "Pineapple with ravioli?",
+    "Psst...arugula with yuzu wasabi dressing...",
+    "What a mango lassi.",
+    "People who wander find bubble tea.",
+    "Lamb chops over corn chowder. 'nough said.",
+    "Enjoy a banh mi.",
+    "Help yourself to crab rangoon."
+    ]
+
 def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
     json_data = json.loads(response.text)
@@ -87,6 +139,8 @@ async def on_message(message):
         await message.channel.send('Hello :)')
     elif re.search('\$inspire', msg):
         await message.channel.send(get_quote())
+    elif any(word in msg.lower() for word in random_words):
+        await message.channgel.send(random.choice(random_replies))
     elif any(word in msg.lower() for word in trigger_phrases):
         await message.channgel.send(random.choice(trigger_replies))
 

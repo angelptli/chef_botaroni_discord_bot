@@ -153,9 +153,10 @@ async def on_message(message):
     elif re.search('\$inspire', msg):
         await message.channel.send(get_quote())
     elif any(word in msg.lower() for word in random_words):
-        await message.channel.send(random.choice(random_replies))
+        if not msg.startswith('$'):
+            await message.channel.send(random.choice(random_replies))
     elif any(word in msg.lower() for word in trigger_phrases):
-        if '$' not in msg:
+        if not msg.startswith('$'):
             await message.channel.send(random.choice(trigger_replies))
 
     # # If using replit's db, uncomment the code below:
@@ -166,7 +167,7 @@ async def on_message(message):
 
         # Comment out this exact line from above if using replit db
         if any(word in msg.lower() for word in trigger_phrases):
-            if '$' not in msg:
+            if not msg.startswith('$'):
                 await message.channel.send(random.choice(options))
 
     if msg.startswith("$chef_botaroni_new"):

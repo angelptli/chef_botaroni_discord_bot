@@ -1,5 +1,6 @@
 import discord
 import os
+import re
 
 client = discord.Client()
 
@@ -12,7 +13,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('$hello'):
+    if re.search('[H|h]([a|e]llo|i|ey|owdy)', message.content):
         await message.channel.send('Hello to you too!')
 
 client.run(os.getenv('TOKEN'))

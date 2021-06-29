@@ -161,7 +161,7 @@ async def on_message(message):
     # if db["chef_botaroni_responding"]:
     #     options = trigger_replies
     #     if "trigs" in db.keys():
-    #         options = options + db["trigs"]
+    #         options.extend(db["trigs"])
 
     #     # Comment out this exact line from above if using replit db
     #     if any(word in msg for word in trigger_phrases):

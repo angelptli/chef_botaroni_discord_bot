@@ -14,19 +14,19 @@ trigger_phrases = ["agon", "angry", "bad", "beat", "bleak", "cry", "depress",
                    "tear", "stress", "suck", "trigger", "weep", "unhappy",
                    "welp", "wimp", "worry"]
 
-trigger_replies = {
+trigger_replies = [
     "Have a snickers",
     "When life gives you lemons, don't squeeze them directly in your eyes",
     "Keep going, I'm always here to lend a virtual pear",
     "How many times do I need to repeat this? Beep boop salad.",
     "Beep Boooooop...orange",
     "Beep Boop almonds",
-    "Get well, or else I'll force feed you durian",
+    "Get well, or else I'll force feed you fermented tofu",
     "Do we need a bartender?",
     "We will break bread and dip it in sauce eventually",
     "Eventually there will be milk in our cereal bowls",
     "Milk or cereal first in the bowl?"
-    "Don't drink too much, you know you only got one liver",
+    "Don't drink too much, you have one liver",
     "Looking back...that egg was sunny side up",
     "Spit it out. The peas.",
     "Someone's crackling like pop rocks",
@@ -34,7 +34,7 @@ trigger_replies = {
     "Remember, avocados are fruits, not veggies",
     "Say it with me: Beep carbs, boop carrots.",
     "I know right, I love burritos too.",
-    "You like gold? How about deez nuggets?",
+    "You like gold? How 'bout deez nuggets?",
     ":( french fries",
     "I don't know how to prepare a salad",
     ":l Soups",
@@ -42,7 +42,7 @@ trigger_replies = {
     "You dropped your hot pocket?",
     "Oh I dropped my hot pocket.",
     "Don't mind me. I'm just here eating popcorn."
-}
+    ]
 
 def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
@@ -61,11 +61,13 @@ async def on_message(message):
 
     msg = message.content
 
-    if re.search('[H|h]([a|e]llo|i|ey|owdy)', msg):
-        await message.channel.send('Hello to you too!')
+    if re.search('[H|h](ello|ey|owdy)', msg) or re.search(' [H|h]i', msg):
+        await message.channel.send('Hello :)')
+    if msg.startswith(('Hi', 'hi')):
+        await message.channel.send('Hello :)')
     elif re.search('\$inspire', msg):
         await message.channel.send(get_quote())
-    elif any(word in msg for word in trigger_phrases):
+    elif any(word in msg.lower() for word in trigger_phrases):
         await message.channgel.send(random.choice(trigger_replies))
 
 client.run(os.getenv('TOKEN'))

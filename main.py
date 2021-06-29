@@ -28,7 +28,7 @@ trigger_replies = [
     "Do we need a bartender?",
     "We will break bread and dip it in sauce eventually",
     "Eventually there will be milk in our cereal bowls",
-    "Milk or cereal first in the bowl?"
+    "Milk or cereal first in the bowl?",
     "Don't drink too much, you have one liver",
     "Looking back...that egg was sunny side up",
     "Spit it out. The peas.",

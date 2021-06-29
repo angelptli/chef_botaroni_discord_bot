@@ -23,7 +23,7 @@ async def on_message(message):
 
     if re.search('[H|h]([a|e]llo|i|ey|owdy)', message.content):
         await message.channel.send('Hello to you too!')
-    elif re.search('$inspire', message.content):
+    elif re.search('\$inspire', "Type $inspire"):
         await message.channel.send(get_quote())
 
 client.run(os.getenv('TOKEN'))

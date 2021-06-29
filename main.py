@@ -58,13 +58,13 @@ random_words = ["embarrass", "permanent", "contract", "market", "telephone",
                 "pedestrian", "theme", "gravity", "obstacle", "appoint",
                 "explain", "other", "round", "opposed", "egg", "character",
                 "teacher", "stage", "health", "omission", "impound", "eaux",
-                "authorise", "bag", "dependence" "welcome", "picture", "code",
+                "authorise", "bag", "dependence" "welcome", "picture", "cow",
                 "approach", "definite", "instruction", "celebration", "spend",
                 "discuss", "fleet", "mine", "copper", "blackmail", "invisible",
                 "proportion", "double", "victory", "increase", "behave",
                 "safe", "reason", "acid", "drill", "joy", "element", "praise",
                 "demonstrate", "hook", "cunning", "roof", "ground", "stitch",
-                "president", "elaborate"]
+                "president", "elaborate", "chef", "botaroni"]
 
 random_replies = [
     "With a serving of vegan chicken balls.",

@@ -11,31 +11,31 @@ Chef Botaroni brings up food and events when one of its random trigger words is 
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_random_reply.png" width="600" height="110">
 #
 
-Chef Botaroni responds when its name is mentioned:<br/><br/>
+**Chef Botaroni responds when its name is mentioned:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_name_mention.png" width="600" height="110">
 #
 
-Chef Botaroni says hello back:<br/><br/>
+**Chef Botaroni says hello back:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_say_hi.png" width="600" height="110">
 #
 
-Chef Botaroni gives inspiration quotes with the `$inspire` command:<br/><br/>
+**Chef Botaroni gives inspiration quotes with the `$inspire` command:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_inspire_quote.png" width="600" height="110">
 #
 
-Chef Botaroni stores user input messages in its database of random replies with the `$chef_botaroni_new` command:<br/><br/>
+**Chef Botaroni stores user input messages in its database of random replies with the `$chef_botaroni_new` command:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_new_user_msg.png" width="600" height="100">
 #
 
-Chef Botaroni displays a list of user input messages with the `$chef_botaroni_list` command:<br/><br/>
+**Chef Botaroni displays a list of user input messages with the `$chef_botaroni_list` command:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_db_list.png" width="600" height="100">
 #
 
-Chef Botaroni can delete user input messages from is database with the `$chef_botaroni_del` command:<br/><br/>
+**Chef Botaroni can delete user input messages from is database with the `$chef_botaroni_del` command:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_del_db_item.png" width="600" height="190">
 #
 
-Chef Botaroni's responses can turn off with the `$chef_botaroni_responding` command:<br/><br/>
+**Chef Botaroni's responses can turn off with the `$chef_botaroni_responding` command:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_response_settings.png" width="600" height="190">
 #
 

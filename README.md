@@ -26,10 +26,10 @@ Chef Botaroni displays a list of user input messages with the `$chef_botaroni_li
 <img src="images/chef_botaroni_db_list.png" width="600" height="100"><br/>
 
 Chef Botaroni can delete user input messages from is database with the `$chef_botaroni_del` command:<br/>
-<img src="images/chef_botaroni_del_db_item.png" width="600" height="180"><br/>
+<img src="images/chef_botaroni_del_db_item.png" width="600" height="190"><br/>
 
 Chef Botaroni's responses can turn off with the `$chef_botaroni_responding` command:<br/>
-<img src="images/chef_botaroni_response_settings.png" width="600" height="180"><br/>
+<img src="images/chef_botaroni_response_settings.png" width="600" height="190"><br/>
 
 ## Credits
 Chef Botaroni was created by Angel Li [@angelptli](https://github.com/angelptli)

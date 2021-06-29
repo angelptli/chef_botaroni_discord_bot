@@ -154,8 +154,9 @@ async def on_message(message):
         await message.channel.send(get_quote())
     elif any(word in msg.lower() for word in random_words):
         await message.channel.send(random.choice(random_replies))
-    # elif any(word in msg.lower() for word in trigger_phrases):
-    #     await message.channel.send(random.choice(trigger_replies))
+    elif any(word in msg.lower() for word in trigger_phrases):
+        if '$' not in msg:
+            await message.channel.send(random.choice(trigger_replies))
 
     # # If using replit's db, uncomment the code below:
     if db["chef_botaroni_responding"]:
@@ -164,8 +165,9 @@ async def on_message(message):
             options.extend(db["trigs"])
 
         # Comment out this exact line from above if using replit db
-        if any(word in msg for word in trigger_phrases):
-            await message.channel.send(random.choice(options))
+        if any(word in msg.lower() for word in trigger_phrases):
+            if '$' not in msg:
+                await message.channel.send(random.choice(options))
 
     if msg.startswith("$chef_botaroni_new"):
         trigger_message = msg.split("$chef_botaroni_new ",1)[1]

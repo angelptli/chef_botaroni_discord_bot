@@ -4,7 +4,7 @@ import re
 import requests
 import json
 import random
-# from replit import db
+from replit import db
 from keep_online import keep_online
 
 client = discord.Client()
@@ -12,7 +12,7 @@ client = discord.Client()
 trigger_phrases = ["agon", "angry", "bad", "beat", "bleak", "cry", "depress",
                    "diss", "down", "freak", "furious", "fury", "fustrat",
                    "hate", "help", "less", "loser", "mad", "mean", "miser",
-                   "murk", "not", "regret", "sad", "shi", "sorr", "stop",
+                   "murk", "never", "regret", "sad", "shi", "sorr", "stop",
                    "tear", "stress", "suck", "trigger", "weep", "unhappy",
                    "welp", "wimp", "worry"]
 
@@ -47,7 +47,7 @@ trigger_replies = [
     "Don't mind me. I'm just here eating popcorn."
     ]
 
-random_words = ["embryo", "permanent", "contract", "market", "telephone",
+random_words = ["embarrass", "permanent", "contract", "market", "telephone",
                 "consciousness", "fantasy", "stake", "help", "obligation",
                 "mean", "offend", "valid", "remind", "nuclear", "resource",
                 "buy", "deputy", "trance", "paralyzed", "employee", "crop",
@@ -69,34 +69,46 @@ random_words = ["embryo", "permanent", "contract", "market", "telephone",
 random_replies = [
     "With a serving of vegan chicken balls.",
     "Delicious...imitation meat...",
-    "Beep boop where can I buy almond ice cream?",
+    "Beep boop where can I buy almond ice cream :icecream:?",
     "I'm craving fake bacon and ham.",
     "I like grilling my BBQ until everything is burnt.",
-    "Sometimes I sit under a tree to when I eat super processed vegan stuff.",
+    "Sometimes I sit under a tree to eat my super processed vegan stuff.",
     "Why enjoy a boiled hot dog when you can enjoy a boiled sausage?",
-    "What's hidden behind the door? A single egg.",
-    "I like onigiri with cheese on top more than anyone else.",
+    "What's hidden behind the door? A single bowl of ramen :ramen:.",
+    "I like onigiri :rice_ball: with cheese on top more than anyone else.",
     "The second I saw the sun today, I thought soft boiled egg.",
     "Traveling became almost extinct. I was eating alone at Ichiran Ramen's.",
     "What's underneath your seat? A potato wedge.",
-    "Yesterday's weather was good for hot fish stew.",
-    "These lyrics remind me of the watercress sandwich I had today.",
-    "I like baked potato soup.",
-    "The green tea and avocado shake turned out as expected.",
-    "Ever had oysters rockefeller? Me netiher.",
-    "This flan is tasty.",
+    "Yesterday's weather was chilly, so I made hot fish soup.",
+    "These lyrics remind me of the watercress sandwich I made today.",
+    "I made baked potato soup.",
+    "The green tea :seedling: and avocado :avocado: shake turned out great.",
+    "Ever had oysters rockefeller :oyster:? Me netiher.",
+    "This flan :flan: is frozen.",
     "Potato wedges are best for repairing relationships.",
-    "Whose got maple bacon doughnuts?",
+    "With maple bacon doughnuts? :doughnut:",
     "I found a persimmon.",
-    "I like pomelo.",
-    "It ain't a party if there's no pho.",
-    "Pineapple with ravioli?",
-    "Psst...arugula with yuzu wasabi dressing...",
-    "What a mango lassi.",
-    "People who wander find bubble tea.",
-    "Lamb chops over corn chowder. 'nough said.",
+    "I like my pomelo `BONELESS`.",
+    "It ain't right without phở :triumph:.",
+    "Pineapple and ravioli?",
+    "Psst...arugula and yuzu wasabi dressing.",
+    "I make mango lassi `BONELESS`.",
+    "People who wander find bubble tea :bubble_tea:.",
+    "Lamb chops and corn chowder!",
     "Enjoy a banh mi.",
-    "Help yourself to crab rangoon."
+    "Help yourself to crab rangoon.",
+    "Enjoy a scalding hot cup of ume plum tea :tea:.",
+    "How about a cup of lychee tea with brown sugar and ginger?",
+    "Pickled bean curd in the house!...What is a house again?",
+    "Beep boop congee.",
+    "Beep boopp spicy bean sprouts.",
+    "Everything I manifested: salad with argula, baby greens, "
+    + "steamed corn, avocado, edible flowers, and salmon fish skin.",
+    "Why not some biryani?",
+    "I added steamed salmon with fresh caponata.",
+    "My energy balls are healthy and tasty.",
+    "Slap some bean curd on it.",
+    "Gogi berries would be nice."
     ]
 
 def get_quote():
@@ -106,22 +118,22 @@ def get_quote():
     return quote
 
 ## If using replit's db:
-# def update_trigs(trig_reply):
-#     if "trigs" in db.keys():
-#         trigs = db["trigs"]
-#         trigs.append(trig_reply)
-#         db["trigs"] = trigs
-#     else:
-#         db["trigs"] = [trig_reply]
+def update_trigs(trig_reply):
+    if "trigs" in db.keys():
+        trigs = db["trigs"]
+        trigs.append(trig_reply)
+        db["trigs"] = trigs
+    else:
+        db["trigs"] = [trig_reply]
 
-# def delete_trigs(index):
-#     trigs = db["trigs"]
-#     if len(trigs) > index:
-#         del trigs[index]
-#     db["trigs"] = trigs
+def delete_trigs(index):
+    trigs = db["trigs"]
+    if len(trigs) > index:
+        del trigs[index]
+    db["trigs"] = trigs
 
-# if "chef_botaroni_responding" not in db.keys():
-#     db["chef_botaroni_responding"] = True
+if "chef_botaroni_responding" not in db.keys():
+    db["chef_botaroni_responding"] = True
 
 @client.event
 async def on_ready():
@@ -142,47 +154,47 @@ async def on_message(message):
         await message.channel.send(get_quote())
     elif any(word in msg.lower() for word in random_words):
         await message.channel.send(random.choice(random_replies))
-    elif any(word in msg.lower() for word in trigger_phrases):
-        await message.channel.send(random.choice(trigger_replies))
+    # elif any(word in msg.lower() for word in trigger_phrases):
+    #     await message.channel.send(random.choice(trigger_replies))
 
     # # If using replit's db, uncomment the code below:
-    # if db["chef_botaroni_responding"]:
-    #     options = trigger_replies
-    #     if "trigs" in db.keys():
-    #         options = options + db["trigs"]
+    if db["chef_botaroni_responding"]:
+        options = trigger_replies
+        if "trigs" in db.keys():
+            options.extend(db["trigs"])
 
-    #     # Comment out this exact line from above if using replit db
-    #     if any(word in msg for word in trigger_phrases):
-    #         await message.channel.send(random.choice(options))
+        # Comment out this exact line from above if using replit db
+        if any(word in msg for word in trigger_phrases):
+            await message.channel.send(random.choice(options))
 
-    # if msg.startswith("$chef_botaroni_new"):
-    #     trigger_message = msg.split("$chef_botaroni_new ",1)[1]
-    #     update_trigs(trigger_message)
-    #     await message.channel.send("New trigger message added.")
+    if msg.startswith("$chef_botaroni_new"):
+        trigger_message = msg.split("$chef_botaroni_new ",1)[1]
+        update_trigs(trigger_message)
+        await message.channel.send("New trigger message added.")
 
-    # if msg.startswith("$chef_botaroni_del"):
-    #     trigs = []
-    #     if "trigs" in db.keys():
-    #         index = int(msg.split("$chef_botaroni_del",1)[1])
-    #         delete_trigs(index)
-    #         trigs = db["trigs"]
-    #     await message.channel.send(trigs)
+    if msg.startswith("$chef_botaroni_del"):
+        trigs = []
+        if "trigs" in db.keys():
+            index = int(msg.split("$chef_botaroni_del",1)[1])
+            delete_trigs(index)
+            trigs = db["trigs"]
+        await message.channel.send(trigs)
 
-    # if msg.startswith("$chef_botaroni_list"):
-    #     trigs = []
-    #     if "trigs" in db.keys():
-    #         trigs = db["trigs"]
-    #     await message.channel.send(trigs)
+    if msg.startswith("$chef_botaroni_list"):
+        trigs = []
+        if "trigs" in db.keys():
+            trigs = db["trigs"]
+        await message.channel.send(trigs)
     
-    # if msg.startswith("$chef_botaroni_responding"):
-    #     value = msg.split("$chef_botaroni_responding ",1)[1]
+    if msg.startswith("$chef_botaroni_responding"):
+        value = msg.split("$chef_botaroni_responding ", 1)[1]
 
-    #     if value.lower() == "true":
-    #         db["chef_botaroni_responding"] = True
-    #         await message.channel.send("Chef Botaroni's responding is on.")
-    #     else:
-    #         db["chef_botaroni_responding"] = False
-    #         await message.channel.send("Chef Botaroni's responding is off.")
+        if value.lower() == "true":
+            db["chef_botaroni_responding"] = True
+            await message.channel.send("Chef Botaroni's responding is on.")
+        else:
+            db["chef_botaroni_responding"] = False
+            await message.channel.send("Chef Botaroni's responding is off.")
 
 keep_online()
 client.run(os.getenv('TOKEN'))

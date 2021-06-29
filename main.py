@@ -68,7 +68,7 @@ def get_quote():
 #     db["trigs"] = trigs
 
 # if "chef_botaroni_responding" not in db.keys():
-#   db["chef_botaroni_responding"] = True
+#     db["chef_botaroni_responding"] = True
 
 @client.event
 async def on_ready():
@@ -90,12 +90,13 @@ async def on_message(message):
     elif any(word in msg.lower() for word in trigger_phrases):
         await message.channgel.send(random.choice(trigger_replies))
 
-    ## If using replit's db:
+    # # If using replit's db, uncomment the code below:
     # if db["chef_botaroni_responding"]:
     #     options = trigger_replies
     #     if "trigs" in db.keys():
     #         options = options + db["trigs"]
 
+    #     # Comment out this exact line from above if using replit db
     #     if any(word in msg for word in trigger_phrases):
     #         await message.channel.send(random.choice(options))
 

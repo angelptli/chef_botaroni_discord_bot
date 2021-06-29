@@ -61,8 +61,10 @@ async def on_message(message):
 
     msg = message.content
 
-    if re.search('[H|h]([a|e]llo|i|ey|owdy)', msg):
-        await message.channel.send('Hello to you too!')
+    if re.search('[H|h](ello|ey|owdy)', msg) or re.search(' [H|h]i', msg):
+        await message.channel.send('Hello :)')
+    if msg.startswith(('Hi', 'hi')):
+        await message.channel.send('Hello :)')
     elif re.search('\$inspire', msg):
         await message.channel.send(get_quote())
     elif any(word in msg.lower() for word in trigger_phrases):

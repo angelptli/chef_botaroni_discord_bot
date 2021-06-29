@@ -14,7 +14,7 @@ trigger_phrases = ["agon", "angry", "bad", "beat", "bleak", "cry", "depress",
                    "tear", "stress", "suck", "trigger", "weep", "unhappy",
                    "welp", "wimp", "worry"]
 
-trigger_replies = {
+trigger_replies = [
     "Have a snickers",
     "When life gives you lemons, don't squeeze them directly in your eyes",
     "Keep going, I'm always here to lend a virtual pear",
@@ -34,7 +34,7 @@ trigger_replies = {
     "Remember, avocados are fruits, not veggies",
     "Say it with me: Beep carbs, boop carrots.",
     "I know right, I love burritos too.",
-    "You like gold? How about deez nuggets?",
+    "You like gold? How 'bout deez nuggets?",
     ":( french fries",
     "I don't know how to prepare a salad",
     ":l Soups",
@@ -42,7 +42,7 @@ trigger_replies = {
     "You dropped your hot pocket?",
     "Oh I dropped my hot pocket.",
     "Don't mind me. I'm just here eating popcorn."
-}
+    ]
 
 def get_quote():
     response = requests.get("https://zenquotes.io/api/random")

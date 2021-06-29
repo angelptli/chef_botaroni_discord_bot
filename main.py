@@ -65,7 +65,7 @@ async def on_message(message):
         await message.channel.send('Hello to you too!')
     elif re.search('\$inspire', msg):
         await message.channel.send(get_quote())
-    elif any(word in msg for word in trigger_phrases):
+    elif any(word in msg.lower() for word in trigger_phrases):
         await message.channgel.send(random.choice(trigger_replies))
 
 client.run(os.getenv('TOKEN'))

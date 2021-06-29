@@ -21,7 +21,7 @@ trigger_replies = [
     "How many times do I need to repeat this? Beep boop salad.",
     "Beep Boooooop...orange",
     "Beep Boop almonds",
-    "Get well, or else I'll force feed you durian",
+    "Get well, or else I'll force feed you fermented tofu",
     "Do we need a bartender?",
     "We will break bread and dip it in sauce eventually",
     "Eventually there will be milk in our cereal bowls",

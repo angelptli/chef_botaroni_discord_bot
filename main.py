@@ -58,13 +58,13 @@ random_words = ["embarrass", "permanent", "contract", "market", "telephone",
                 "pedestrian", "theme", "gravity", "obstacle", "appoint",
                 "explain", "other", "round", "opposed", "egg", "character",
                 "teacher", "stage", "health", "omission", "impound", "eaux",
-                "authorise", "bag", "dependence" "welcome", "picture", "code",
+                "authorise", "bag", "dependence" "welcome", "picture", "cow",
                 "approach", "definite", "instruction", "celebration", "spend",
                 "discuss", "fleet", "mine", "copper", "blackmail", "invisible",
                 "proportion", "double", "victory", "increase", "behave",
                 "safe", "reason", "acid", "drill", "joy", "element", "praise",
                 "demonstrate", "hook", "cunning", "roof", "ground", "stitch",
-                "president", "elaborate"]
+                "president", "elaborate", "chef", "botaroni"]
 
 random_replies = [
     "With a serving of vegan chicken balls.",
@@ -153,9 +153,11 @@ async def on_message(message):
     elif re.search('\$inspire', msg):
         await message.channel.send(get_quote())
     elif any(word in msg.lower() for word in random_words):
-        await message.channel.send(random.choice(random_replies))
-    # elif any(word in msg.lower() for word in trigger_phrases):
-    #     await message.channel.send(random.choice(trigger_replies))
+        if not msg.startswith('$'):
+            await message.channel.send(random.choice(random_replies))
+    elif any(word in msg.lower() for word in trigger_phrases):
+        if not msg.startswith('$'):
+            await message.channel.send(random.choice(trigger_replies))
 
     # # If using replit's db, uncomment the code below:
     if db["chef_botaroni_responding"]:
@@ -164,8 +166,9 @@ async def on_message(message):
             options.extend(db["trigs"])
 
         # Comment out this exact line from above if using replit db
-        if any(word in msg for word in trigger_phrases):
-            await message.channel.send(random.choice(options))
+        if any(word in msg.lower() for word in trigger_phrases):
+            if not msg.startswith('$'):
+                await message.channel.send(random.choice(options))
 
     if msg.startswith("$chef_botaroni_new"):
         trigger_message = msg.split("$chef_botaroni_new ",1)[1]

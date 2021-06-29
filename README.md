@@ -7,35 +7,35 @@ Chef Botaroni is discord bot that brings up random food when a user types one of
 *Note: Chef Botaroni is a bot that has never eaten human food and is a mediocre chef at best.*
 
 ## Chef Botaroni Features
-**It brings up food and events when one of its random trigger words is typed:**<br/><br/>
+**...brings up food and events when a random trigger words is typed:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_random_reply.png" width="600" height="110">
 #
 
-**It responds when its name is mentioned:**<br/><br/>
+**...responds when its name is mentioned:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_name_mention.png" width="600" height="110">
 #
 
-**It says hello back:**<br/><br/>
+**...says hello back:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_say_hi.png" width="600" height="110">
 #
 
-**It gives inspiration quotes with the `$inspire` command:**<br/><br/>
+**...gives inspiration quotes with the `$inspire` command:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_inspire_quote.png" width="600" height="110">
 #
 
-**It stores user input messages in its database of random replies with the `$chef_botaroni_new` command:**<br/><br/>
+**...stores user input messages in its database of random replies with the `$chef_botaroni_new` command:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_new_user_msg.png" width="600" height="100">
 #
 
-**It displays a list of user input messages with the `$chef_botaroni_list` command:**<br/><br/>
+**...displays a list of user input messages with the `$chef_botaroni_list` command:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_db_list.png" width="600" height="100">
 #
 
-**It can delete user input messages from is database with the `$chef_botaroni_del` command:**<br/><br/>
+**...deletes user input messages from is database with the `$chef_botaroni_del` command:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_del_db_item.png" width="600" height="190">
 #
 
-**Its responses can turn off with the `$chef_botaroni_responding` command:**<br/><br/>
+**...turns off responses with the `$chef_botaroni_responding` command:**<br/><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="images/chef_botaroni_response_settings.png" width="600" height="190">
 #
 

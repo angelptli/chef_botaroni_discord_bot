@@ -4,7 +4,7 @@ import re
 import requests
 import json
 import random
-# from replit import db
+from replit import db
 from keep_online import keep_online
 
 client = discord.Client()
@@ -118,22 +118,22 @@ def get_quote():
     return quote
 
 ## If using replit's db:
-# def update_trigs(trig_reply):
-#     if "trigs" in db.keys():
-#         trigs = db["trigs"]
-#         trigs.append(trig_reply)
-#         db["trigs"] = trigs
-#     else:
-#         db["trigs"] = [trig_reply]
+def update_trigs(trig_reply):
+    if "trigs" in db.keys():
+        trigs = db["trigs"]
+        trigs.append(trig_reply)
+        db["trigs"] = trigs
+    else:
+        db["trigs"] = [trig_reply]
 
-# def delete_trigs(index):
-#     trigs = db["trigs"]
-#     if len(trigs) > index:
-#         del trigs[index]
-#     db["trigs"] = trigs
+def delete_trigs(index):
+    trigs = db["trigs"]
+    if len(trigs) > index:
+        del trigs[index]
+    db["trigs"] = trigs
 
-# if "chef_botaroni_responding" not in db.keys():
-#     db["chef_botaroni_responding"] = True
+if "chef_botaroni_responding" not in db.keys():
+    db["chef_botaroni_responding"] = True
 
 @client.event
 async def on_ready():
@@ -154,47 +154,47 @@ async def on_message(message):
         await message.channel.send(get_quote())
     elif any(word in msg.lower() for word in random_words):
         await message.channel.send(random.choice(random_replies))
-    elif any(word in msg.lower() for word in trigger_phrases):
-        await message.channel.send(random.choice(trigger_replies))
+    # elif any(word in msg.lower() for word in trigger_phrases):
+    #     await message.channel.send(random.choice(trigger_replies))
 
     # # If using replit's db, uncomment the code below:
-    # if db["chef_botaroni_responding"]:
-    #     options = trigger_replies
-    #     if "trigs" in db.keys():
-    #         options.extend(db["trigs"])
+    if db["chef_botaroni_responding"]:
+        options = trigger_replies
+        if "trigs" in db.keys():
+            options.extend(db["trigs"])
 
-    #     # Comment out this exact line from above if using replit db
-    #     if any(word in msg for word in trigger_phrases):
-    #         await message.channel.send(random.choice(options))
+        # Comment out this exact line from above if using replit db
+        if any(word in msg for word in trigger_phrases):
+            await message.channel.send(random.choice(options))
 
-    # if msg.startswith("$chef_botaroni_new"):
-    #     trigger_message = msg.split("$chef_botaroni_new ",1)[1]
-    #     update_trigs(trigger_message)
-    #     await message.channel.send("New trigger message added.")
+    if msg.startswith("$chef_botaroni_new"):
+        trigger_message = msg.split("$chef_botaroni_new ",1)[1]
+        update_trigs(trigger_message)
+        await message.channel.send("New trigger message added.")
 
-    # if msg.startswith("$chef_botaroni_del"):
-    #     trigs = []
-    #     if "trigs" in db.keys():
-    #         index = int(msg.split("$chef_botaroni_del",1)[1])
-    #         delete_trigs(index)
-    #         trigs = db["trigs"]
-    #     await message.channel.send(trigs)
+    if msg.startswith("$chef_botaroni_del"):
+        trigs = []
+        if "trigs" in db.keys():
+            index = int(msg.split("$chef_botaroni_del",1)[1])
+            delete_trigs(index)
+            trigs = db["trigs"]
+        await message.channel.send(trigs)
 
-    # if msg.startswith("$chef_botaroni_list"):
-    #     trigs = []
-    #     if "trigs" in db.keys():
-    #         trigs = db["trigs"]
-    #     await message.channel.send(trigs)
+    if msg.startswith("$chef_botaroni_list"):
+        trigs = []
+        if "trigs" in db.keys():
+            trigs = db["trigs"]
+        await message.channel.send(trigs)
     
-    # if msg.startswith("$chef_botaroni_responding"):
-    #     value = msg.split("$chef_botaroni_responding ",1)[1]
+    if msg.startswith("$chef_botaroni_responding"):
+        value = msg.split("$chef_botaroni_responding ", 1)[1]
 
-    #     if value.lower() == "true":
-    #         db["chef_botaroni_responding"] = True
-    #         await message.channel.send("Chef Botaroni's responding is on.")
-    #     else:
-    #         db["chef_botaroni_responding"] = False
-    #         await message.channel.send("Chef Botaroni's responding is off.")
+        if value.lower() == "true":
+            db["chef_botaroni_responding"] = True
+            await message.channel.send("Chef Botaroni's responding is on.")
+        else:
+            db["chef_botaroni_responding"] = False
+            await message.channel.send("Chef Botaroni's responding is off.")
 
 keep_online()
 client.run(os.getenv('TOKEN'))

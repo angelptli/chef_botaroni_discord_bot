@@ -1,7 +1,10 @@
 # Meet Chef Botaroni!
-<img src="images/chef_botaroni_online.png", width="250", height="90"><br/>
-Chef Botaroni is discord bot that brings up random food when a user types one of its random trigger words. Chef Botaroni has a minimalistic view on what makes for a good eat.<br/>
-*Note: Chef Botaroni is a bot that has never eaten human food and is a mediocre chef at best.*<br/>
+
+<img src="images/chef_botaroni_online.png", width="250", height="100">
+
+Chef Botaroni is discord bot that brings up random food when a user types one of its random trigger words. Chef Botaroni has a minimalistic view on what makes for a good eat. <br/>
+<br/>
+*Note: Chef Botaroni is a bot that has never eaten human food and is a mediocre chef at best.*
 
 ## Chef Botaroni Features
 Chef Botaroni brings up food and events when a random trigger word is typed:<br/>

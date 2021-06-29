@@ -140,9 +140,9 @@ async def on_message(message):
     elif re.search('\$inspire', msg):
         await message.channel.send(get_quote())
     elif any(word in msg.lower() for word in random_words):
-        await message.channgel.send(random.choice(random_replies))
+        await message.channel.send(random.choice(random_replies))
     elif any(word in msg.lower() for word in trigger_phrases):
-        await message.channgel.send(random.choice(trigger_replies))
+        await message.channel.send(random.choice(trigger_replies))
 
     # # If using replit's db, uncomment the code below:
     # if db["chef_botaroni_responding"]:

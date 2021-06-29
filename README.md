@@ -1,4 +1,4 @@
-<img src="images/chef_botaroni_online.png" width="210" height="80">
+<div style="text-align:center"><img src="images/chef_botaroni_online.png" width="420" height="160">
 
 # Meet Chef Botaroni!
 

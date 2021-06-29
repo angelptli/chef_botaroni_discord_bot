@@ -4,6 +4,7 @@ import re
 import requests
 import json
 import random
+# from replit import db
 
 client = discord.Client()
 
@@ -14,6 +15,7 @@ trigger_phrases = ["agon", "angry", "bad", "beat", "bleak", "cry", "depress",
                    "tear", "stress", "suck", "trigger", "weep", "unhappy",
                    "welp", "wimp", "worry"]
 
+# If using replit, store trigger_replies in built-in db feature
 trigger_replies = [
     "Have a snickers",
     "When life gives you lemons, don't squeeze them directly in your eyes",
@@ -50,6 +52,21 @@ def get_quote():
     quote = json_data[0]['q'] + " -" + json_data[0]['a']
     return quote
 
+## If using replit
+# def update_trigger_replies(trigger_reply):
+#     if "trigger_replies" in db.keys():
+#         trigger_replies = db["trigger_replies"]
+#         trigger_replies.append(trigger_reply)
+#         db["trigger_replies"] = trigger_replies
+#     else:
+#         db["trigger_replies"] = [trigger_reply]
+
+# def delete_encouragment(index):
+#     trigger_replies = db["trigger_replies"]
+#     if len(trigger_replies) > index:
+#         del trigger_replies[index]
+#     db["trigger_replies"] = trigger_replies
+
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
@@ -69,5 +86,22 @@ async def on_message(message):
         await message.channel.send(get_quote())
     elif any(word in msg.lower() for word in trigger_phrases):
         await message.channgel.send(random.choice(trigger_replies))
+
+    # options = trigger_replies
+    # if "trigger_replies" in db.keys():
+    #     options = options + db["trigger_replies"]
+    # if any(word in msg for word in trigger_phrases):
+    #     await message.channel.send(random.choice(options))
+    # if msg.startswith("$new"):
+    #     trigger_message = msg.split("$new ",1)[1]
+    #     update_trigger_replies(trigger_message)
+    #     await message.channel.send("New encouraging message added.")
+    # if msg.startswith("$del"):
+    #     trigger_replies = []
+    #     if "trigger_replies" in db.keys():
+    #         index = int(msg.split("$del",1)[1])
+    #         delete_encouragment(index)
+    #         trigger_replies = db["trigger_replies"]
+    #     await message.channel.send(trigger_replies)
 
 client.run(os.getenv('TOKEN'))

@@ -11,7 +11,7 @@ client = discord.Client()
 
 trigger_phrases = ["agon", "angry", "bad", "beat", "bleak", "cry", "depress",
                    "diss", "down", "freak", "furious", "fury", "fustrat",
-                   "hate", "help", "less", "loser", "mad", "mean", "miser",
+                   "hate", "help", "less", "loser", "mean", "miser", "miss"
                    "murk", "never", "regret", "sad", "shi", "sorr", "stop",
                    "tear", "stress", "suck", "trigger", "weep", "unhappy",
                    "welp", "wimp", "worry"]
@@ -49,7 +49,7 @@ trigger_replies = [
 
 random_words = ["embarrass", "permanent", "contract", "market", "telephone",
                 "consciousness", "fantasy", "stake", "help", "obligation",
-                "mean", "offend", "valid", "remind", "nuclear", "resource",
+                "mean", "offend", "valid", "remix", "nuclear", "resource",
                 "buy", "deputy", "trance", "paralyzed", "employee", "crop",
                 "band", "castle", "hypothesis", "candle", "site", "situation",
                 "wilderness", "dump", "gene", "appointment", "crown", "please",
@@ -144,20 +144,30 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    msg = message.content
+    msg = message.content.lower()
 
-    if re.search('[H|h](ello|ey|owdy)', msg) or re.search(' [H|h]i', msg):
-        await message.channel.send('Hello :)')
-    elif msg.startswith(('Hi', 'hi')):
-        await message.channel.send('Hello :)')
-    elif re.search('\$inspire', msg):
+    if re.match('\s*h(ello|ey|owdy)', msg):
+        await message.channel.send('Hello! :)')
+    elif re.search('h(ello|ey|owdy)', msg):
+        # Check that there is no alpha char before the re result
+        greetings_set = {'hello', 'hey', 'howdy'}
+        greetings = [msg.index(item) for item in greetings_set if item in msg]
+        for i in greetings:
+            if re.match('[^A-Za-z]|[ Hh]', msg[i - 1]):
+                await message.channel.send('Hello there. :)')
+                break
+    elif re.match("[ h]i", msg):
+        await message.channel.send('Hi :)')
+
+    if re.search('\$inspire', msg):
         await message.channel.send(get_quote())
-    elif any(word in msg.lower() for word in random_words):
+
+    if any(word in msg for word in random_words):
         if not msg.startswith('$'):
             await message.channel.send(random.choice(random_replies))
-    elif any(word in msg.lower() for word in trigger_phrases):
-        if not msg.startswith('$'):
-            await message.channel.send(random.choice(trigger_replies))
+    # elif any(word in msg for word in trigger_phrases):
+    #     if not msg.startswith('$'):
+    #         await message.channel.send(random.choice(trigger_replies))
 
     # # If using replit's db, uncomment the code below:
     if db["chef_botaroni_responding"]:
@@ -166,7 +176,7 @@ async def on_message(message):
             options.extend(db["trigs"])
 
         # Comment out this exact line from above if using replit db
-        if any(word in msg.lower() for word in trigger_phrases):
+        if any(word in msg for word in trigger_phrases):
             if not msg.startswith('$'):
                 await message.channel.send(random.choice(options))
 
@@ -192,7 +202,7 @@ async def on_message(message):
     if msg.startswith("$chef_botaroni_responding"):
         value = msg.split("$chef_botaroni_responding ", 1)[1]
 
-        if value.lower() == "true":
+        if value == "true":
             db["chef_botaroni_responding"] = True
             await message.channel.send("Chef Botaroni's responding is on.")
         else:
